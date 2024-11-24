@@ -14,7 +14,7 @@
 		"action": "/",
 		"method": "GET",
 		"params": {
-			"url": "link"
+			"link": "url"
 		}
 	},
 	"orientation": "any",
