@@ -8,13 +8,11 @@
 
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
 
 	const { data, form } = $props();
 </script>
 
 <form autocomplete="off" method="post" action="?/create" use:enhance>
-	<pre>{JSON.stringify($page.url.search, null, '\t')}</pre>
 	{#if form?.error}
 		<div class="error">{form.error}</div>
 	{/if}
