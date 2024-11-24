@@ -1,14 +1,20 @@
+import { PASSWORD } from '$env/static/private';
 import { db } from '$lib/server/db/index.js';
 import { links } from '$lib/server/db/schema.js';
 import { fail, redirect } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 import { FIELDS } from './+page.svelte';
-import { PASSWORD } from '$env/static/private';
 
-export async function load({ request, url: { searchParams }, params: { slug } }) {
+export async function load({ url: { searchParams }, params: { slug } }) {
 	if (slug) {
 		const [link] = await db.select().from(links).where(eq(links.slug, slug)).execute();
 		if (link) {
+			db.update(links)
+				.set({
+					visits: link.visits + 1,
+				})
+				.where(eq(links.slug, slug))
+				.execute();
 			redirect(308, link.link);
 		}
 		const new_params = new URLSearchParams(searchParams);
@@ -16,12 +22,10 @@ export async function load({ request, url: { searchParams }, params: { slug } })
 		redirect(302, `/?${new_params.toString()}`);
 	}
 
-	const referer = request.headers.get('referer');
 	const to_short = searchParams.get('url')?.toString() ?? '';
 	const wanted_slug = searchParams.get('slug')?.toString() ?? '';
 
 	return {
-		is_lol: !!referer?.includes('.lol'),
 		to_short,
 		slug: wanted_slug,
 	};
