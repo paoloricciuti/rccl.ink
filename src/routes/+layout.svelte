@@ -39,6 +39,7 @@
 				{@render children()}
 			</div>
 		</div>
+		<a class="accent stats" href="/stats">stats</a>
 	</div>
 </div>
 
@@ -51,6 +52,13 @@
 		justify-content: center;
 		padding: 2rem;
 		font-family: 'Fira Code', monospace;
+	}
+
+	.stats {
+		text-decoration: none;
+		position: fixed;
+		top: 1rem;
+		right: 1rem;
 	}
 
 	.dim {
