@@ -1,7 +1,6 @@
 export function load({ request }) {
-	const referer = request.headers.get('referer');
-	console.log(request.headers);
+	const host = request.headers.get('host');
 	return {
-		is_lol: !!referer?.includes('.lol'),
+		is_lol: !!host?.includes('.lol'),
 	};
 }
