@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { set_notifications } from '$lib/notifications.svelte';
 	import './app.css';
 	let { children, data } = $props();
+
+	const notifications = set_notifications();
 </script>
 
 {#snippet website({ domain, top_level }: { domain: string; top_level: string })}
@@ -41,6 +44,12 @@
 		</div>
 		<a class="accent stats" href="/stats">stats</a>
 	</div>
+</div>
+
+<div class="notifications">
+	{#each notifications.list as notification (notification.id)}
+		<div>{notification.text}</div>
+	{/each}
 </div>
 
 <style>
@@ -146,6 +155,22 @@
 		transform: translateX(-50%);
 		color: #6a6a6a;
 		font-size: 0.9rem;
+	}
+
+	.notifications {
+		position: fixed;
+		bottom: 1rem;
+		right: 1rem;
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.notifications > div {
+		background-color: #2a2a2a;
+		padding: 1rem;
+		max-width: 50%;
+		font-family: monospace;
+		color: white;
 	}
 
 	@media (max-width: 640px) {

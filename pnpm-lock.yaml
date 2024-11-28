@@ -14,6 +14,9 @@ importers:
       drizzle-orm:
         specifier: ^0.33.0
         version: 0.33.0(@types/better-sqlite3@7.6.12)(better-sqlite3@11.5.0)(bun-types@1.1.34)
+      headless-qr:
+        specifier: ^1.0.3
+        version: 1.0.3
     devDependencies:
       '@sveltejs/adapter-node':
         specifier: ^5.2.9
@@ -1259,6 +1262,9 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
+
+  headless-qr@1.0.3:
+    resolution: {integrity: sha512-HHVwf1i++Ho2vFstHxAdfP0OjB7Di44nGXbh3VXciuzwkuFb1oeFDCrfOLjFgHip/Kbc/wq2GOaSTiKQ81K/Yg==}
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -2723,6 +2729,8 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
+
+  headless-qr@1.0.3: {}
 
   ieee754@1.2.1: {}
 
