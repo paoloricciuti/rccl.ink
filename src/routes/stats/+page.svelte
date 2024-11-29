@@ -22,8 +22,13 @@
 						const canvas = document.createElement('canvas');
 						const ctx = canvas.getContext('2d')!;
 						const modules = qr(link.link);
-						let scale = 20;
-						canvas.width = canvas.height = modules.length * scale;
+						const scale = 20;
+						const padding = 50;
+						canvas.width = canvas.height = modules.length * scale + padding * 2;
+
+						ctx.fillStyle = 'white';
+
+						ctx.fillRect(0, 0, canvas.width, canvas.width);
 
 						ctx.fillStyle = 'black';
 
@@ -31,8 +36,9 @@
 							const row = modules[y];
 							for (let x = 0; x < row.length; x++) {
 								const cell = row[x];
-								ctx.fillStyle = cell ? 'black' : 'white';
-								ctx.fillRect(x * scale, y * scale, scale, scale);
+								if (cell) {
+									ctx.fillRect(x * scale + padding, y * scale + padding, scale, scale);
+								}
 							}
 						}
 
