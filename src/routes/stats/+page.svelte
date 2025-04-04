@@ -12,7 +12,7 @@
 		<li>
 			<a
 			target="_blank"
-			onclick={(e)=>{
+			onclick={async (e)=>{
 				e.preventDefault();
 				try {
 					await navigator.clipboard.write(`https://rccl.ink/${link.slug}`);
