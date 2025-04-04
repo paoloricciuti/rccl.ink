@@ -10,7 +10,17 @@
 <ul>
 	{#each data.links as link}
 		<li>
-			<a href={link.link}>/{link.slug}</a>
+			<a
+			target="_blank"
+			onclick={(e)=>{
+				e.preventDefault();
+				try {
+					await navigator.clipboard.write(`https://rccl.ink/${link.slug}`);
+					notifications.add('Copied to the clipboard');
+				} catch {
+					notifications.add('Impossible to copy');
+				}
+			}}>/{link.slug}</a>
 			<div class="stats-and-actions">
 				{link.visits}
 				<form
