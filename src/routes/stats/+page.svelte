@@ -16,7 +16,7 @@
 				onclick={async (e)=>{
 					e.preventDefault();
 					try {
-						await navigator.clipboard.write(`https://rccl.ink/${link.slug}`);
+						await navigator.clipboard.writeText(`https://rccl.ink/${link.slug}`);
 						notifications.add('Copied to the clipboard');
 					} catch {
 						notifications.add('Impossible to copy');
