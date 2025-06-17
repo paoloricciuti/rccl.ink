@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { set_notifications } from '$lib/notifications.svelte';
 	import './app.css';
 	let { children, data } = $props();
@@ -18,9 +18,7 @@
 		<header>
 			<div class="title-group">
 				<div class="code-tag">&lt;URLShortener&gt;</div>
-				{@render website(
-					data.is_lol ? { domain: 'rcc', top_level: 'lol' } : { domain: 'rccl', top_level: 'ink' },
-				)}
+				{@render website(data)}
 				<div class="code-tag end-tag">&lt;/URLShortener&gt;</div>
 			</div>
 			<div class="subtitle">
@@ -35,7 +33,7 @@
 				<span class="terminal-dot"></span>
 				<span class="terminal-dot"></span>
 				<span class="terminal-dot"></span>
-				<span class="terminal-title">{$page.data.terminal_title ?? 'shorten'}</span>
+				<span class="terminal-title">{page.data.terminal_title ?? 'shorten'}</span>
 			</div>
 
 			<div class="terminal-body">

@@ -1,6 +1,7 @@
 export function load({ request }) {
-	const host = request.headers.get('host');
+	const [domain, top_level] = request.headers.get('host')?.split(".") ?? ["rcc","im"];
 	return {
-		is_lol: !!host?.includes('.lol'),
+		domain,
+		top_level
 	};
 }

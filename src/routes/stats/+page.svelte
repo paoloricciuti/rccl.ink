@@ -13,15 +13,18 @@
 			<a
 				href={link.link}
 				target="_blank"
-				onclick={async (e)=>{
+				onclick={async (e) => {
 					e.preventDefault();
 					try {
-						await navigator.clipboard.writeText(`https://rccl.ink/${link.slug}`);
+						await navigator.clipboard.writeText(
+							`https://${data.domain}.${data.top_level}/${link.slug}`,
+						);
 						notifications.add('Copied to the clipboard');
 					} catch {
 						notifications.add('Impossible to copy');
 					}
-				}}>/{link.slug}</a>
+				}}>/{link.slug}</a
+			>
 			<div class="stats-and-actions">
 				{link.visits}
 				<form
